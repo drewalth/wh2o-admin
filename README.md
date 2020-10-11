@@ -1,29 +1,24 @@
-# wh2o-admin
+<p align="center">Lux - Vue Admin Dashboard Template</p>
 
-## Project setup
-```
-npm install
-```
+- Vue js Admin with dark mode + RTL + Demo Apps
+- Vuetify - Number #1 UI Vue Component Library
+- Integrated with Vue CLI + Vuex + Vue-Router
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<br/>
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Documentation
 
-### Run your unit tests
-```
-npm run test:unit
-```
+See - `Lux-Documentation.pdf`
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Commands
+#### `npm install`
+> Installs package dependencies
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### `npm run dev` or `npm run serve` 
+> Compiles and hot-reloads for development
+
+#### `npm run build`
+> Compiles and minifies for production
+
+#### `npm run lint`
+> Lints and fixes files
