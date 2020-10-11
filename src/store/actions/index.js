@@ -17,7 +17,12 @@ export default {
       const result = await http.get(requestURL).then((res) => res.data)
 
       if (result) {
-        context.commit(types.DATA_SUCCESS, result)
+
+        if (data.key) {
+          context.commit(types.DATA_SUCCESS, result[data.key])
+        } else {
+          context.commit(types.DATA_SUCCESS, result)
+        }
       }
 
     } catch (error) {

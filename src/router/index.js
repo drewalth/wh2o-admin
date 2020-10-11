@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
+import { localStoreWorker } from '@/services'
 
 // Routes
 import PagesRoutes from './pages.routes'
@@ -48,7 +49,19 @@ const router = new Router({
  */
 router.beforeEach((to, from, next) => {
   if (!store.getters['User/isAuthenticated'] && !to.path.includes('auth')) {
-    return next('/auth/signin')
+
+    const { uid } = JSON.parse(localStoreWorker.get('wh2o-admin-auth'))
+
+    if (uid) {
+      store.dispatch('User/getProperty', {
+        url: `/user?uid=${uid}`,
+        key: 'user'
+      })
+
+      return next()
+    } else {
+      return next('/auth/signin')
+    }
   } else {
     return next()
   }

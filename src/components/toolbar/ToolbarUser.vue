@@ -10,7 +10,7 @@
           offset-y="10"
         >
           <v-avatar size="40">
-            <v-img src="/images/avatars/avatar1.svg"></v-img>
+            {{ user && user.uname.charAt(0).toUpperCase() }}
           </v-avatar>
         </v-badge>
       </v-btn>
@@ -50,6 +50,7 @@
 
 <script>
 import config from '../../configs'
+import { mapState } from 'vuex'
 /*
 |---------------------------------------------------------------------
 | Toolbar User Component
@@ -63,6 +64,11 @@ export default {
     return {
       menu: config.toolbar.user
     }
+  },
+  computed: {
+    ...mapState({
+      user: (state) => state.User.data
+    })
   }
 }
 </script>
