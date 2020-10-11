@@ -17,10 +17,14 @@
       <!-- Navigation menu info -->
       <template v-slot:prepend>
         <div class="pa-2">
-          <v-img src="/images/logos/aw-logo-small.png" height="32" class="pa-2" contain position=left />
+          <v-img
+            src="/images/logos/aw-logo-small.png"
+            height="32"
+            class="pa-2"
+            contain
+            position="left"
+          />
         </div>
-       
-
         
       </template>
 
@@ -29,7 +33,6 @@
 
       <!-- Navigation menu footer -->
       <template v-slot:append>
-        
 
         <!-- REMOVE ME - Shop Demo purposes -->
         <div class="pa-2 pt-1">

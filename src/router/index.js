@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store'
 
 // Routes
 import PagesRoutes from './pages.routes'
@@ -46,7 +47,11 @@ const router = new Router({
  * Before each route update
  */
 router.beforeEach((to, from, next) => {
-  return next()
+  if (!store.getters['User/isAuthenticated'] && !to.path.includes('auth')) {
+    return next('/auth/signin')
+  } else {
+    return next()
+  }
 })
 
 /**

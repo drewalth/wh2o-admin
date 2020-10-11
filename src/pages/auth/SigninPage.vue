@@ -41,9 +41,11 @@
             x-large
             color="primary"
             @click="submit"
-          >{{ $t('login.button') }}</v-btn>
+          >{{ $t("login.button") }}</v-btn>
 
-          <div class="caption font-weight-bold text-uppercase my-3">{{ $t('login.orsign') }}</div>
+          <div class="caption font-weight-bold text-uppercase my-3">
+            {{ $t("login.orsign") }}
+          </div>
 
           <!-- external providers list -->
           <v-btn
@@ -60,11 +62,13 @@
             {{ provider.label }}
           </v-btn>
 
-          <div v-if="errorProvider" class="error--text">{{ errorProviderMessages }}</div>
+          <div v-if="errorProvider" class="error--text">
+            {{ errorProviderMessages }}
+          </div>
 
           <div class="mt-5">
             <router-link to="/auth/forgot-password">
-              {{ $t('login.forgot') }}
+              {{ $t("login.forgot") }}
             </router-link>
           </div>
         </v-form>
@@ -72,9 +76,9 @@
     </v-card>
 
     <div class="text-center mt-6">
-      {{ $t('login.noaccount') }}
+      {{ $t("login.noaccount") }}
       <router-link to="/auth/signup" class="font-weight-bold">
-        {{ $t('login.create') }}
+        {{ $t("login.create") }}
       </router-link>
     </div>
   </div>
@@ -89,6 +93,9 @@
 | Sign in template for user authentication into the application
 |
 */
+import { mapState } from 'vuex'
+import { authLogin, getUser } from './controllers'
+import { localStoreWorker } from '@/services'
 export default {
   data() {
     return {
@@ -98,8 +105,8 @@ export default {
 
       // form
       isFormValid: true,
-      email: '',
-      password: '',
+      email: 'admin@aw.com',
+      password: 'y',
 
       // form error
       error: false,
@@ -111,19 +118,34 @@ export default {
       // show password field
       showPassword: false,
 
-      providers: [{
-        id: 'google',
-        label: 'Google',
-        isLoading: false
-      }, {
-        id: 'facebook',
-        label: 'Facebook',
-        isLoading: false
-      }],
+      providers: [
+        {
+          id: 'google',
+          label: 'Google',
+          isLoading: false
+        },
+        {
+          id: 'facebook',
+          label: 'Facebook',
+          isLoading: false
+        }
+      ],
 
       // input rules
       rules: {
         required: (value) => (value && Boolean(value)) || 'Required'
+      }
+    }
+  },
+  computed: {
+    ...mapState({
+      user: (state) => state.User.data
+    })
+  },
+  watch: {
+    user(val) {
+      if (val) {
+        this.$router.push('/')
       }
     }
   },
@@ -135,8 +157,23 @@ export default {
         this.signIn(this.email, this.password)
       }
     },
-    signIn(email, password) {
-      this.$router.push('/')
+    async signIn(email, password) {
+      try {
+        const result = await authLogin({
+          email,
+          password
+        })
+
+        if (result) {
+          localStoreWorker.add('wh2o-admin-auth-token', result.token)
+          this.$store.dispatch('User/setProperty', result.user)
+        }
+      } catch (error) {
+        console.log('error :>> ', error)
+      } finally {
+        this.isLoading = false
+        this.isSignInDisabled = false
+      }
     },
     signInProvider(provider) {},
     resetErrors() {
