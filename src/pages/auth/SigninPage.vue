@@ -105,8 +105,8 @@ export default {
 
       // form
       isFormValid: true,
-      email: 'admin@aw.com',
-      password: 'y',
+      email: '',
+      password: '',
 
       // form error
       error: false,

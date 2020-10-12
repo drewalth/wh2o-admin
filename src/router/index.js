@@ -6,6 +6,8 @@ import { localStoreWorker } from '@/services'
 // Routes
 import PagesRoutes from './pages.routes'
 import UsersRoutes from './users.routes'
+import ReachesRoutes from './reaches.routes'
+import ArticlesRoutes from './articles.routes'
 
 Vue.use(Router)
 
@@ -19,6 +21,8 @@ export const routes = [{
 },
 ...PagesRoutes,
 ...UsersRoutes,
+...ReachesRoutes,
+...ArticlesRoutes,
 {
   path: '/blank',
   name: 'blank',

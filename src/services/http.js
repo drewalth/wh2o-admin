@@ -23,10 +23,10 @@ const http = axios.create(config)
  * user auth interceptor
  */
 const authInterceptor = (config) => {
-  const { token } = JSON.parse(localStoreWorker.get('wh2o-admin-auth'))
+  const userData = JSON.parse(localStoreWorker.get('wh2o-admin-auth'))
 
-  if (token) {
-    config.headers.Authorization = `${token}`
+  if (userData && userData.token) {
+    config.headers.Authorization = `Bearer ${userData.token}`
   }
 
   return config

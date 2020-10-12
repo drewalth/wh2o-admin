@@ -7,7 +7,7 @@
       </div>
       <v-spacer></v-spacer>
       <v-btn color="primary">
-        Create User
+        Create Reach
       </v-btn>
     </div>
     <v-card>
@@ -160,19 +160,14 @@ export default {
   },
   computed: {
     ...mapState({
-      users: (state) => state.Users.data,
-      loading: (state) => state.Users.loading
+      reaches: (state) => state.Reaches.data,
+      loading: (state) => state.Reaches.loading
     })
   },
-  watch: {
-    selectedUsers(val) {
-
-    }
-  },
   created() {
-    if (!this.users) {
-      this.$store.dispatch('Users/getProperty', {
-        url: '/users'
+    if (!this.reaches) {
+      this.$store.dispatch('Reaches/getProperty', {
+        url: '/reaches'
       })
     }
   },
