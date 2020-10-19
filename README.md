@@ -1,17 +1,9 @@
-<p align="center">Lux - Vue Admin Dashboard Template</p>
+# wh2o-admin
 
-- Vue js Admin with dark mode + RTL + Demo Apps
-- Vuetify - Number #1 UI Vue Component Library
-- Integrated with Vue CLI + Vuex + Vue-Router
-
-<br/>
-
-### Documentation
-
-See - `Lux-Documentation.pdf`
+A prototype for American Whitewater's concept REST API, [`wh2o-api`](https://github.com/AmericanWhitewater/wh2o-api).
 
 ## Commands
-#### `npm install`
+#### `npm ci`
 > Installs package dependencies
 
 #### `npm run dev` or `npm run serve` 
