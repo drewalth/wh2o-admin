@@ -167,9 +167,10 @@ export default {
         if (result) {
           localStoreWorker.add('wh2o-admin-auth', JSON.stringify({
             token: result.token,
-            uid: result.user.uid
+            uid: result.uid
           }))
-          this.$store.dispatch('User/setProperty', result.user)
+          this.$store.dispatch('User/setProperty', result)
+          this.$router.push('/')
         }
       } catch (error) {
         console.log('error :>> ', error)

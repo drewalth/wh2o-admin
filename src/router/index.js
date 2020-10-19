@@ -49,31 +49,28 @@ const router = new Router({
 })
 
 /**
- * Before each route update
+ * Check User Auth Before Each
  */
 router.beforeEach((to, from, next) => {
-  if (!store.getters['User/isAuthenticated'] && !to.path.includes('auth')) {
 
-    const { uid } = JSON.parse(localStoreWorker.get('wh2o-admin-auth'))
+  const token = localStoreWorker.get('wh2o-admin-auth')
 
-    if (uid && !store._modules.root.state.User.data) {
-      store.dispatch('User/getProperty', {
-        url: `/user?uid=${uid}`
-      })
+  if (token && !store.getters['User/isAuthenticated']) {
 
-      return next()
-    } else {
-      return next('/auth/signin')
-    }
+    const { uid } = JSON.parse(token)
+
+    store.dispatch('User/getProperty', {
+      url: `/user?uid=${uid}`
+    })
+
+    return next()
+  }
+
+  if (!token && !store.getters['User/isAuthenticated'] && !to.path.includes('auth')) {
+    return next('/auth/signin')
   } else {
     return next()
   }
-})
-
-/**
- * After each route update
- */
-router.afterEach((to, from) => {
 })
 
 export default router
