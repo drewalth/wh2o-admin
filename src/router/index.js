@@ -56,10 +56,9 @@ router.beforeEach((to, from, next) => {
 
     const { uid } = JSON.parse(localStoreWorker.get('wh2o-admin-auth'))
 
-    if (uid) {
+    if (uid && !store._modules.root.state.User.data) {
       store.dispatch('User/getProperty', {
-        url: `/user?uid=${uid}`,
-        key: 'user'
+        url: `/user?uid=${uid}`
       })
 
       return next()

@@ -2,7 +2,7 @@
   <div class="d-flex flex-column flex-grow-1">
     <div class="d-flex align-center py-3">
       <div>
-        <div class="display-1">Users</div>
+        <div class="display-1">Reaches</div>
         <v-breadcrumbs :items="breadcrumbs" class="pa-0 py-2"></v-breadcrumbs>
       </div>
       <v-spacer></v-spacer>
@@ -17,7 +17,7 @@
           <v-menu offset-y left>
             <template v-slot:activator="{ on }">
               <transition name="slide-fade" mode="out-in">
-                <v-btn v-show="selectedUsers.length > 0" v-on="on">
+                <v-btn v-show="selectedReaches.length > 0" v-on="on">
                   Actions
                   <v-icon right>mdi-menu-down</v-icon>
                 </v-btn>
@@ -63,10 +63,10 @@
       </v-row>
 
       <v-data-table
-        v-model="selectedUsers"
+        v-model="selectedReaches"
         show-select
         :headers="headers"
-        :items="users ? users : []"
+        :items="reaches && reaches.length ? reaches : []"
         :search="searchQuery"
         class="flex-grow-1"
       >
@@ -112,9 +112,9 @@
           <div>{{ item.updated_at | formatDate('lll') }}</div>
         </template>
 
-        <template v-slot:item.action="{ }">
+        <template v-slot:item.action="{item }">
           <div class="actions">
-            <v-btn icon to="/users/edit">
+            <v-btn icon :to="`/reach-detail/${item.id}`">
               <v-icon>mdi-open-in-new</v-icon>
             </v-btn>
           </div>
@@ -129,14 +129,14 @@ import { mapState } from 'vuex'
 import CopyLabel from '../../components/common/CopyLabel'
 
 export default {
-  name: 'UsersPage',
+  name: 'ReachesPage',
   components: {
     CopyLabel
   },
   data() {
     return {
       breadcrumbs: [{
-        text: 'Users',
+        text: 'Reaches',
         disabled: false,
         href: '#'
       }, {
@@ -144,16 +144,11 @@ export default {
       }],
 
       searchQuery: '',
-      selectedUsers: [],
+      selectedReaches: [],
       headers: [
-        { text: 'Id', align: 'left', value: 'uid' },
-        { text: 'Email', value: 'email' },
-        { text: 'Verified', value: 'verifydate' },
-        { text: 'Name', align: 'left', value: 'name' },
-        // { text: 'Role', value: 'role' },
-        { text: 'Created', value: 'created_at' },
-        { text: 'Updated', value: 'updated_at' },
-        { text: 'Disabled', value: 'disabled' },
+        { text: 'River', align: 'left', value: 'river' },
+        { text: 'Section', align: 'left', value: 'section' },
+        { text: 'Class', value: 'class' },
         { text: '', sortable: false, align: 'right', value: 'action' }
       ]
     }
@@ -167,7 +162,8 @@ export default {
   created() {
     if (!this.reaches) {
       this.$store.dispatch('Reaches/getProperty', {
-        url: '/reaches'
+        url: '/reaches',
+        key: 'rows'
       })
     }
   },
@@ -175,8 +171,9 @@ export default {
     searchUser() {},
     open() {},
     handleRefresh() {
-      this.$store.dispatch('Users/getProperty', {
-        url: '/users'
+      this.$store.dispatch('Reaches/getProperty', {
+        url: '/reaches',
+        key: 'rows'
       })
     }
   }
