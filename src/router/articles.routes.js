@@ -10,5 +10,10 @@ export default [{
   path: '/articles/create',
   name: 'articles-create',
   component: () => import(/* webpackChunkName: "articles-create" */ '@/pages/articles/CreateArticlePage.vue')
+},
+{
+  path: '/articles/edit/:id',
+  name: 'articles-edit',
+  component: () => import(/* webpackChunkName: "articles-edit" */ '@/pages/articles/ArticleDetail.vue')
 }
 ]

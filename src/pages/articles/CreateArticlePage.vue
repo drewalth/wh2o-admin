@@ -131,6 +131,13 @@ export default {
           shortname: this.formTitle,
           releasedate: new Date()
         })
+
+        if (result) {
+          this.$store.dispatch('Articles/getProperty', {
+            url: '/articles'
+          })
+        }
+
       } catch (error) {
         console.log('error :>> ', error)
       }

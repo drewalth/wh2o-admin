@@ -10,20 +10,14 @@
       app
       floating
       class="elevation-1"
-      :right="$vuetify.rtl"
+      :right="true"
       :light="menuTheme === 'light'"
       :dark="menuTheme === 'dark'"
     >
       <!-- Navigation menu info -->
       <template v-slot:prepend>
         <div class="pa-2">
-          <v-img
-            src="/images/logos/aw-logo-small.png"
-            height="32"
-            class="pa-2"
-            contain
-            position="left"
-          />
+         
         </div>
         
       </template>
@@ -50,7 +44,9 @@
       :light="toolbarTheme === 'light'"
       :dark="toolbarTheme === 'dark'"
     >
+    
       <v-card class="flex-grow-1 d-flex" :class="[isToolbarDetached ? 'pa-1 mt-3 mx-1' : 'pa-0 ma-0']" :flat="!isToolbarDetached">
+         
         <div class="d-flex flex-grow-1 align-center">
 
           <!-- search input mobile -->
@@ -67,11 +63,28 @@
           ></v-text-field>
 
           <div v-else class="d-flex flex-grow-1 align-center">
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-
-            <v-spacer class="d-none d-lg-block"></v-spacer>
 
             <!-- search input desktop -->
+
+            <v-spacer class="d-block d-sm-none"></v-spacer>
+
+            <v-btn class="d-block d-sm-none" icon @click="showSearch = true">
+              <v-icon>mdi-magnify</v-icon>
+            </v-btn>
+
+            <!-- <div class="hidden-xs-only mx-1">
+              <toolbar-currency />
+            </div> -->
+
+            <!-- <toolbar-apps /> -->
+          
+            <v-img
+              src="/images/logos/aw-logo-small.png"
+              height="32"
+              class="pa-2"
+              contain
+              position="left"
+            />
             <v-text-field
               ref="search"
               class="mx-1 hidden-xs-only"
@@ -82,26 +95,17 @@
               rounded
               dense
             ></v-text-field>
-
-            <v-spacer class="d-block d-sm-none"></v-spacer>
-
-            <v-btn class="d-block d-sm-none" icon @click="showSearch = true">
-              <v-icon>mdi-magnify</v-icon>
-            </v-btn>
-
+            <v-spacer class="d-none d-lg-block"></v-spacer>
+             
             <toolbar-language />
-
-            <div class="hidden-xs-only mx-1">
-              <toolbar-currency />
-            </div>
-
-            <toolbar-apps />
-
             <div :class="[$vuetify.rtl ? 'ml-1' : 'mr-1']">
               <toolbar-notifications />
             </div>
-
             <toolbar-user />
+            <v-btn depressed class="ml-2" @click.stop="drawer = !drawer">
+              Menu
+              <v-icon class="ml-1">mdi-menu</v-icon>
+            </v-btn>
           </div>
         </div>
       </v-card>
@@ -115,10 +119,10 @@
       </v-container>
 
       <v-footer app inset>
-        <v-spacer></v-spacer>
         <div class="overline">
-          Built with <v-icon small color="pink">mdi-heart</v-icon>
+          &copy; 2020 American Whitewater
         </div>
+        <v-spacer></v-spacer>
       </v-footer>
     </v-main>
   </div>

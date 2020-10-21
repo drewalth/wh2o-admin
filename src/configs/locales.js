@@ -23,25 +23,24 @@ export default {
     flag: 'es',
     label: 'Español',
     messages: es
-  }, {
-    code: 'pt',
-    flag: 'pt',
-    label: 'Português',
-    messages: pt
-  }, {
-    code: 'de',
-    flag: 'de',
-    label: 'Deutsche',
-    messages: de
-  }, {
+  },
+  // {
+  // code: 'pt',
+  // flag: 'pt',
+  // label: 'Português',
+  // messages: pt
+  // },
+  // {
+  // code: 'de',
+  // flag: 'de',
+  // label: 'Deutsche',
+  // messages: de
+  // },
+  {
     code: 'fr',
     flag: 'fr',
     label: 'Français',
     messages: fr
-  }, {
-    code: 'ar',
-    flag: 'sa',
-    label: 'العربية',
-    messages: ar
-  }]
+  }
+  ]
 }

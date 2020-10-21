@@ -1,4 +1,8 @@
 export default {
+  'accidentReport': 'Reporte de Accidente',
+  'accidents': 'Accidentes',
+  'articles': 'Artículos',
+  'rivers': 'Rios',
   'common': {
     'add': 'Agregar',
     'cancel': 'Cancelar',

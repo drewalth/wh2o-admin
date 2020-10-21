@@ -25,12 +25,27 @@
 
 export default [
   {
-    icon: 'mdi-account-multiple', text: 'Users', link: '/users/list'
+    icon: 'mdi-account-multiple',
+    key: 'menu.users',
+    text: 'Users',
+    link: '/users/list'
   },
   {
-    icon: 'mdi-waves', text: 'Reaches', link: '/reaches/list'
+    icon: 'mdi-waves',
+    key: 'rivers',
+    text: 'Reaches',
+    link: '/reaches/list'
   },
   {
-    icon: 'mdi-playlist-edit', text: 'Articles', link: '/articles/list'
+    icon: 'mdi-playlist-edit',
+    key: 'articles',
+    text: 'Articles',
+    link: '/articles/list'
+  },
+  {
+    icon: 'mdi-hospital-box-outline',
+    key: 'accidents',
+    text: 'Accidents',
+    link: '/accidents/list'
   }
 ]

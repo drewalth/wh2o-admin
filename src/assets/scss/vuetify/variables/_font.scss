@@ -1,4 +1,5 @@
-$body-font-family: 'Quicksand', sans-serif;
+$body-font-family: 'IBM Plex Sans', sans-serif;
+$accent-font-family: 'IBM Plex Mono', sans-serif;
 $font-size-root: 15px;
 $line-height-root: 1.5;
 
@@ -33,13 +34,13 @@ $headings: (
     'weight': 400,
     'letter-spacing': .0333333333em,
     'line-height': 1.25rem,
-    'font-family': $body-font-family
+    'font-family': $accent-font-family
   ),
   'overline': (
     'size': .625rem,
     'weight': 400,
     'letter-spacing': .1666666667em,
     'line-height': 1rem,
-    'font-family': $body-font-family
+    'font-family': $accent-font-family
   )
 );

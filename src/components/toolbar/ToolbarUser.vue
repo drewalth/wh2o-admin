@@ -2,7 +2,13 @@
   <v-menu offset-y left transition="slide-y-transition">
     <template v-slot:activator="{ on }">
       <v-btn icon class="elevation-2" v-on="on">
-        <v-badge color="success" dot bordered offset-x="10" offset-y="10">
+        <v-badge
+          color="success"
+          dot
+          bordered
+          offset-x="10"
+          offset-y="10"
+        >
           <v-avatar size="40">
             {{ user && user.uname.charAt(0).toUpperCase() }}
           </v-avatar>
@@ -47,8 +53,8 @@
 </template>
 
 <script>
-import config from "../../configs";
-import { mapState } from "vuex";
+import config from '../../configs'
+import { mapState } from 'vuex'
 /*
 |---------------------------------------------------------------------
 | Toolbar User Component
@@ -57,25 +63,25 @@ import { mapState } from "vuex";
 | Quickmenu for user menu shortcuts on the toolbar
 |
 */
-import { localStoreWorker } from "@/services";
+import { localStoreWorker } from '@/services'
 export default {
-  name: "ToolbarUser",
+  name: 'ToolbarUser',
   data() {
     return {
-      menu: config.toolbar.user,
-    };
+      menu: config.toolbar.user
+    }
   },
   computed: {
     ...mapState({
-      user: (state) => state.User.data,
-    }),
+      user: (state) => state.User.data
+    })
   },
   methods: {
     handleLogout() {
-      localStoreWorker.remove("wh2o-admin-auth");
-      this.$store.dispatch("User/setProperty", null);
-      this.$router.replace("/auth/signin");
-    },
-  },
-};
+      localStoreWorker.remove('wh2o-admin-auth')
+      this.$store.dispatch('User/setProperty', null)
+      this.$router.replace('/auth/signin')
+    }
+  }
+}
 </script>

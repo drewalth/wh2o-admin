@@ -8,6 +8,7 @@ import PagesRoutes from './pages.routes'
 import UsersRoutes from './users.routes'
 import ReachesRoutes from './reaches.routes'
 import ArticlesRoutes from './articles.routes'
+import AccidentsRoutes from './accidents.routes'
 
 Vue.use(Router)
 
@@ -23,6 +24,7 @@ export const routes = [{
 ...UsersRoutes,
 ...ReachesRoutes,
 ...ArticlesRoutes,
+...AccidentsRoutes,
 {
   path: '/blank',
   name: 'blank',
