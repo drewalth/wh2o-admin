@@ -114,7 +114,6 @@
   </div>
 </template>
 <script>
-import debounce from 'lodash.debounce'
 import { mapState } from 'vuex'
 import { newAccidentReport } from './controllers'
 export default {

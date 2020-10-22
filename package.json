@@ -14,7 +14,6 @@
     "axios": "^0.20.0",
     "echarts": "^4.8.0",
     "flag-icon-css": "^3.4.6",
-    "lodash": "^4.17.15",
     "moment": "^2.26.0",
     "moment-timezone": "^0.5.31",
     "qs": "^6.9.4",
