@@ -9,15 +9,15 @@
 import qs from 'qs'
 import axios from 'axios'
 import { localStoreWorker } from './local-storage'
-import { apiBaseUrl } from '@/environment'
+import { restApiBaseUrl } from '@/environment'
 
 const config = {
-  baseURL: apiBaseUrl,
+  baseURL: restApiBaseUrl,
   // validateStatus: (status) => (status >= 200 && status < 300),
   paramsSerializer: (params) => qs.stringify(params, { indices: false })
 }
 
-const http = axios.create(config)
+const rest = axios.create(config)
 
 /**
  * user auth interceptor
@@ -32,12 +32,12 @@ const authInterceptor = (config) => {
   return config
 }
 
-http.interceptors.request.use(authInterceptor)
-http.interceptors.response.use(
+rest.interceptors.request.use(authInterceptor)
+rest.interceptors.response.use(
   (response) => response,
   (error) =>
     /** Do something with response error */
     Promise.reject(error)
 )
 
-export { http }
+export { rest }

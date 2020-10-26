@@ -1,14 +1,20 @@
 export default [{
-  path: '/reaches',
-  redirect: 'reaches-list'
+  path: '/admin/reaches',
+  redirect: '/admin/reaches-list'
 }, {
-  path: '/reaches/list',
+  path: '/admin/reaches/list',
   name: 'reaches-list',
+  meta: {
+    layout: 'admin'
+  },
   component: () => import(/* webpackChunkName: "reaches-list" */ '@/pages/reaches/ReachesPage.vue')
 },
 {
-  path: '/reach-detail/:id',
+  path: '/admin/reach-detail/:id',
   name: 'reach-detail',
+  meta: {
+    layout: 'admin'
+  },
   component: () => import(/* webpackChunkName: "reach-detail" */ '@/pages/reaches/reach-detail/ReachDetail.vue')
 }
 ]

@@ -1,19 +1,28 @@
 export default [{
-  path: '/articles',
-  redirect: 'articles-list'
+  path: '/admin/articles',
+  redirect: '/admin/articles-list'
 }, {
-  path: '/articles/list',
+  path: '/admin/articles/list',
   name: 'articles-list',
+  meta: {
+    layout: 'admin'
+  },
   component: () => import(/* webpackChunkName: "users-list" */ '@/pages/articles/ArticlesPage.vue')
 },
 {
-  path: '/articles/create',
+  path: '/admin/articles/create',
   name: 'articles-create',
+  meta: {
+    layout: 'admin'
+  },
   component: () => import(/* webpackChunkName: "articles-create" */ '@/pages/articles/CreateArticlePage.vue')
 },
 {
-  path: '/articles/edit/:id',
+  path: '/admin/articles/edit/:id',
   name: 'articles-edit',
+  meta: {
+    layout: 'admin'
+  },
   component: () => import(/* webpackChunkName: "articles-edit" */ '@/pages/articles/ArticleDetail.vue')
 }
 ]

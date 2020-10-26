@@ -1,10 +1,9 @@
 <template>
   <v-card>
     <div class="reach-map">
-       <v-skeleton-loader
-          v-bind="attrs"
-          type="image"
-        ></v-skeleton-loader>
+      <v-skeleton-loader
+        type="image"
+      ></v-skeleton-loader>
     </div>
   </v-card>
 </template>

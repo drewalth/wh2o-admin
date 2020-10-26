@@ -19,7 +19,7 @@
     <v-row>
       <v-col cols="12" sm="6" md="4" lg="2">
         <v-list nav dense>
-          <v-list-item-group v-model="selectedItem" color="primary">
+          <v-list-item-group v-model="activeTab" color="primary">
             <v-list-item v-for="(item, i) in items" :key="i">
               <v-list-item-icon>
                 <v-icon v-text="item.icon"></v-icon>
@@ -45,45 +45,46 @@
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
-import { ReachMap } from "./components";
+import { mapState } from 'vuex'
+import { ReachMap } from './components'
 export default {
-  name: "ReachDetail",
+  name: 'ReachDetail',
   components: {
-    ReachMap,
+    ReachMap
   },
   data: () => ({
+    activeTab: 'General',
     breadcrumbs: [
       {
-        text: "Reaches",
-        to: "/reaches/list",
-        exact: true,
+        text: 'Reaches',
+        to: '/reaches/list',
+        exact: true
       },
       {
-        text: "Edit Reach",
-      },
+        text: 'Edit Reach'
+      }
     ],
     items: [
-      { text: "General", icon: "mdi-folder" },
-      { text: "Flow", icon: "mdi-chart-line" },
-      { text: "Gallery", icon: "mdi-camera" },
-      { text: "Map", icon: "mdi-map" },
-      { text: "News", icon: "mdi-note" },
-      { text: "Accidents", icon: "mdi-hospital-box-outline" },
-      { text: "Credits", icon: "mdi-account-multiple" },
-    ],
+      { text: 'General', icon: 'mdi-folder' },
+      { text: 'Flow', icon: 'mdi-chart-line' },
+      { text: 'Gallery', icon: 'mdi-camera' },
+      { text: 'Map', icon: 'mdi-map' },
+      { text: 'News', icon: 'mdi-note' },
+      { text: 'Accidents', icon: 'mdi-hospital-box-outline' },
+      { text: 'Credits', icon: 'mdi-account-multiple' }
+    ]
   }),
   computed: {
     ...mapState({
       reach: (state) => state.ReachDetail.data,
       loading: (state) => state.ReachDetail.loading,
-      error: (state) => state.ReachDetail.error,
-    }),
+      error: (state) => state.ReachDetail.error
+    })
   },
   created() {
-    this.$store.dispatch("ReachDetail/getProperty", {
-      url: `/reach?id=${this.$route.params.id}`,
-    });
-  },
-};
+    this.$store.dispatch('ReachDetail/getProperty', {
+      url: `/reach?id=${this.$route.params.id}`
+    })
+  }
+}
 </script>

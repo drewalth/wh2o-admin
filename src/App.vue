@@ -20,6 +20,7 @@ import { mapState } from 'vuex'
 import config from './configs'
 
 // Layouts
+import adminLayout from './layouts/AdminLayout'
 import defaultLayout from './layouts/DefaultLayout'
 import simpleLayout from './layouts/SimpleLayout'
 import authLayout from './layouts/AuthLayout'
@@ -35,6 +36,7 @@ import errorLayout from './layouts/ErrorLayout'
 */
 export default {
   components: {
+    adminLayout,
     defaultLayout,
     simpleLayout,
     authLayout,

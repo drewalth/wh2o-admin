@@ -1,4 +1,4 @@
-import { http } from '@/services'
+import { rest } from '@/services'
 import * as types from '../mutations/mutationTypes'
 
 export default {
@@ -14,7 +14,7 @@ export default {
         requestURL = data
       }
 
-      const result = await http.get(requestURL).then((res) => res.data)
+      const result = await rest.get(requestURL).then((res) => res.data)
 
       if (result) {
 

@@ -16,7 +16,6 @@ module.exports = {
 
   // https://cli.vuejs.org/config/#css-extract
   css: {
-    extract: { ignoreOrder: true },
     loaderOptions: {
       sass: {
         prependData: '@import \'~@/assets/scss/vuetify/variables\''

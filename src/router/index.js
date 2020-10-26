@@ -3,28 +3,20 @@ import Router from 'vue-router'
 import store from '@/store'
 import { localStoreWorker } from '@/services'
 
-// Routes
-import PagesRoutes from './pages.routes'
-import UsersRoutes from './users.routes'
-import ReachesRoutes from './reaches.routes'
-import ArticlesRoutes from './articles.routes'
-import AccidentsRoutes from './accidents.routes'
+import HomePage from '@/pages/home/HomePage.vue'
+import authRoutes from './auth'
+import adminRoutes from './admin'
+import webRoutes from "./web"
 
 Vue.use(Router)
 
 export const routes = [{
   path: '/',
-  redirect: '/dashboard/analytics'
-}, {
-  path: '/dashboard/analytics',
-  name: 'dashboard-analytics',
-  component: () => import(/* webpackChunkName: "dashboard" */ '@/pages/dashboard/DashboardPage.vue')
+  component: HomePage
 },
-...PagesRoutes,
-...UsersRoutes,
-...ReachesRoutes,
-...ArticlesRoutes,
-...AccidentsRoutes,
+...authRoutes,
+  ...adminRoutes,
+  ...webRoutes,
 {
   path: '/blank',
   name: 'blank',
